@@ -29,7 +29,7 @@ class MovieGatherSpider(scrapy.Spider):
         self.db = psycopg2.connect(database=DATABASE['database'], user=DATABASE['user'], password=DATABASE['password'], host=DATABASE['ip'], port=DATABASE['port'])
         self.cur = self.db.cursor()
         # m_path="F:\py_workspace\getdoubanURL\douban\spiders\driver\geckodriver.exe"
-        m_path="driver/geckodriver_linux"
+        m_path="spiders/driver/geckodriver_linux"
         options = Options()
         options.add_argument("--headless")
         firefox_profile = webdriver.FirefoxProfile()

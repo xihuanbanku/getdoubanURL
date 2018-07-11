@@ -13,10 +13,6 @@ from douban.settings import DATABASE
 
 
 class MovieGatherSpider(scrapy.Spider):
-    red = "\033[31;1m  %s  \033[0m"
-    blue = "\033[34;1m  %s  \033[0m"
-    green = "\033[1;32;40m  %s  \033[0m"
-    yellow = "\033[33;1m  %s  \033[0m"
     name = 'movie_gather'
     start_urls = ['https://www.douban.com/']
 
@@ -29,7 +25,7 @@ class MovieGatherSpider(scrapy.Spider):
         self.db = psycopg2.connect(database=DATABASE['database'], user=DATABASE['user'], password=DATABASE['password'], host=DATABASE['ip'], port=DATABASE['port'])
         self.cur = self.db.cursor()
         # m_path="F:\py_workspace\getdoubanURL\douban\spiders\driver\geckodriver.exe"
-        m_path="/home/hadoop/deploy/spider/getdoubanURL/douban/spiders/drive/geckodriver_linux"
+        m_path="/home/hadoop/deploy/spider/getdoubanURL/douban/spiders/driver/geckodriver_linux"
         options = Options()
         options.add_argument("--headless")
         firefox_profile = webdriver.FirefoxProfile()

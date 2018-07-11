@@ -28,9 +28,10 @@ class MovieGatherSpider(scrapy.Spider):
             self.cookie[key] = value.replace('"','')
         self.db = psycopg2.connect(database=DATABASE['database'], user=DATABASE['user'], password=DATABASE['password'], host=DATABASE['ip'], port=DATABASE['port'])
         self.cur = self.db.cursor()
-        m_path="F:\py_workspace\getdoubanURL\douban\spiders\driver\geckodriver"
+        # m_path="F:\py_workspace\getdoubanURL\douban\spiders\driver\geckodriver.exe"
+        m_path="driver/geckodriver"
         options = Options()
-        options.add_argument("--headless")
+        #options.add_argument("--headless")
         firefox_profile = webdriver.FirefoxProfile()
         firefox_profile.set_preference('permissions.default.image', 2)
         self.driver = webdriver.Firefox(firefox_options=options, firefox_profile=firefox_profile, executable_path=m_path)
@@ -107,4 +108,4 @@ class MovieGatherSpider(scrapy.Spider):
     #打印当前时间的消息
     def loggerWithTime(self, message):
         now = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-        self.loggerWithTime("[%s][%s]"%(now, message))
+        print("[%s][%s]"%(now, message))

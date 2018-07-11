@@ -40,7 +40,7 @@ class MovieGatherSpider(scrapy.Spider):
         # display = Display(visible=0, size=(1024, 768))
         # display.start()
         self.loggerWithTime( u'Read KeyWord Task!!!')
-        read_sql = 'select keyword from public.tb_movie_keyword_task where flag=0'
+        read_sql = 'select keyword from public.tb_movie_keyword_task where flag=0 limit 10'
         self.cur.execute(read_sql)
         keyword_task = self.cur.fetchall()
         self.loggerWithTime(u'requests done!!!')
